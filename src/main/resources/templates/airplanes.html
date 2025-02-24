@@ -19,9 +19,18 @@
             <td style="min-width: 150px" th:text="${plane.model}"/>
             <td th:text="${plane.places}"/>
             <td>
-
+                <form th:action="@{/airplanes/{id} (id=${plane.id})}" method="post">
+                    <input type="hidden" name="_method" value="delete"/>
+                    <button type="submit" class="button">Delete</button>
+                </form>
             </td>
         </tr>
     </table>
+    <p>
+        <a class="button" th:href="@{/airplanes/newPlane}">Add new Plane</a>
+    </p>
+    <p>
+        <a class="button" th:href="@{/}">Back</a>
+    </p>
 </body>
 </html>

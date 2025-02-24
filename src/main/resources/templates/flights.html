@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Our Flights</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <h1>Our Flights:</h1>
+    <table>
+        <tr class="blue">
+            <th>Id</th>
+            <th>Number</th>
+            <th>Direction</th>
+            <th>Airplane Model</th>
+            <th>Action</th>
+        </tr>
+        <tr class="blue" th:each="flight : ${flights}">
+            <td th:text="${flight.id}"/>
+            <td th:text="${flight.number}"/>
+            <td th:text="${flight.direction}"/>
+            <td th:text="${flight.airplane.model}"/>
+            <td>
+
+            </td>
+        </tr>
+    </table>
+    <p>
+        <a class="button" th:href="@{/flights/newFlight}">Open new Direction</a>
+    </p>
+    <p>
+        <a class="button" th:href="@{/}">Back</a>
+    </p>
+</body>
+</html>

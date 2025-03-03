@@ -8,6 +8,8 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.experimental.UtilityClass;
 
+import java.util.List;
+
 @Entity
 @Table(name = "flight")
 @Getter
@@ -26,4 +28,6 @@ public class Flight {
     private int planeId;
     @ManyToOne
     private Airplane airplane;
+    @OneToMany(mappedBy = "flight", fetch = FetchType.EAGER)
+    private List<Passenger> passengers;
 }

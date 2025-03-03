@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Flight Page</title>
+    <link rel="stylesheet" href="/css/styles.css">
+</head>
+<body>
+    <p class="red">
+        You can change the plain only for <span th:text="${flight.number}"/>
+    </p>
+    <form th:action="@{/flights}" th:object="${flight}" method="post">
+        <input type="hidden" name="_method" value="patch"/>
+        <label for="planeId">Airplane:</label>
+        <input type="hidden" th:field="*{id}">
+        <input type="hidden" th:field="*{number}">
+        <input type="hidden" th:field="*{direction}">
+        <select id="planeId" th:field="*{planeId}">
+            <option th:each="plane : ${session.ourPlanes}" th:value="${plane.id}" th:text="${plane.model}"/>
+        </select>
+        <br>
+        <button class="button" type="submit">Update</button>
+        <a class="button" th:href="@{/flights}">Back</a>
+    </form>
+</body>
+</html>
